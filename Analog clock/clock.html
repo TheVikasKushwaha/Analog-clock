@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Analog Clock</title>
+  <script src="script.js" defer></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: radial-gradient(circle at center, #0a2a43, #081b29);
+      overflow: hidden;
+      color: white;
+      font-family: "Poppins", sans-serif;
+    }
+
+    .wrapper {
+      position: relative;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 0 40px rgba(0, 255, 255, 0.2),
+        inset 0 0 25px rgba(0, 255, 255, 0.5);
+    }
+
+    .number-hour {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+    }
+
+    .number-hour span {
+      position: absolute;
+      transform: rotate(calc(var(--index) * 30deg));
+      inset: 6px;
+      text-align: center;
+    }
+
+    .number-hour span p {
+      font-size: 48px;
+      transform: rotate(calc(var(--index) * -30deg));
+      color: aqua;
+      text-shadow: 0 0 10px aqua;
+    }
+
+    .hand-box {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hand-box .hand {
+      position: absolute;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hand-box .hand i {
+      display: inline-block;
+      transform-origin: bottom;
+      border-radius: 50%;
+    }
+
+    .hand-box .hours {
+      width: 320px;
+      height: 320px;
+    }
+
+    .hand-box .hours i {
+      width: 8px;
+      height: 160px;
+      background: red;
+      box-shadow: 0 0 10px red;
+    }
+
+    .hand-box .minutes {
+      width: 450px;
+      height: 450px;
+    }
+
+    .hand-box .minutes i {
+      width: 6px;
+      height: 225px;
+      background: rgb(243, 211, 3);
+      box-shadow: 0 0 10px yellow;
+    }
+
+    .hand-box .seconds {
+      width: 480px;
+      height: 480px;
+    }
+
+    .hand-box .seconds i {
+      width: 3px;
+      height: 240px;
+      background: rgb(225, 255, 254);
+      box-shadow: 0 0 8px cyan;
+    }
+
+    /* center glowing dot */
+    .center-dot {
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: aqua;
+      border-radius: 50%;
+      box-shadow: 0 0 20px aqua, 0 0 40px aqua;
+      z-index: 10;
+    }
+
+    /* digital clock */
+    .digital-time {
+      margin-top: 30px;
+      font-size: 2rem;
+      color: aqua;
+      text-shadow: 0 0 10px aqua, 0 0 20px cyan;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="number-hour"></div>
+    <div class="hand-box">
+      <div class="hand hours"><i></i></div>
+      <div class="hand minutes"><i></i></div>
+      <div class="hand seconds"><i></i></div>
+    </div>
+    <div class="center-dot"
